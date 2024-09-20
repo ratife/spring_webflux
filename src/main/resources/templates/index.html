@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+       <link href="/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body onload="initGraph()">
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        	<!-- /*@thymesVar id="societies" type="java.util.List<mg.tife.web_flux.entity.Society>"  */-->
+            <tr th:each="s:${societies}">
+                <td th:text="${s.id}"></td>
+                <td th:text="${s.name}"></td>
+                <td th:text="${s.price}"></td>
+                <td>
+				    <button class="btn btn-primary" th:attr="onclick=|checkTransaction('${s.id}')|">Check</button>
+				</td>
+
+            </tr>
+        </tbody>
+    </table>
+    <canvas id="chart" width="1000" height="400"></canvas>
+</div>
+</body>
+<script src="/app.js"></script>
+<script src="/smoothie.js"></script>
+</html>
